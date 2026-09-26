@@ -31,7 +31,7 @@ export default function Options({ messages }: Props) {
   }, [categoryId.value, hairGroupId.value]);
 
   return (
-    <div class="flex min-w-0 flex-col gap-[18px] overflow-auto pt-9">
+    <div class="flex h-full min-h-0 flex-col gap-[18px] overflow-auto px-3 py-2">
       {category.view === "tabs" && (
         <div class="flex gap-4" role="tablist">
           {category.groups.map((group) => (

@@ -5,11 +5,10 @@ export default function Preview() {
   const layers = composedLayers(selection.value);
 
   return (
-    <div class="min-h-0 overflow-hidden rounded-[18px] border-2 border-ink bg-white">
-      <div
-        class="relative h-full w-full"
-        style={{ background: slotColor("background", selection.value) }}
-      >
+    <div
+      class="relative h-full w-full"
+      style={{ background: slotColor("background", selection.value) }}
+    >
         {layers.map((layer) =>
           layer.color ? (
             <div
@@ -30,7 +29,6 @@ export default function Preview() {
             />
           ),
         )}
-      </div>
     </div>
   );
 }

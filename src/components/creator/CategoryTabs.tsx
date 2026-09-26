@@ -1,31 +1,50 @@
 import { catalog } from "../../data/catalog";
 import type { Messages } from "../../data/messages";
+import { cn } from "../../lib/cn";
 import { categoryId } from "./state";
 
 type Props = {
   messages: Messages;
 };
 
+function tabClass(index: number, count: number, selected: boolean) {
+  const isFirst = index === 0;
+  const isLast = index === count - 1;
+  const shape = "grid h-full cursor-pointer place-items-center border-ink p-0";
+
+  if (isFirst) {
+    return cn(
+      shape,
+      "w-full rounded-tr-[18px] border-t-2 border-r-2",
+      selected ? "relative z-10 h-[calc(100%+2px)]" : "border-b-2",
+    );
+  }
+
+  return cn(
+    shape,
+    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[18px] rounded-tr-[18px] border-2",
+    isLast && "border-b-0",
+    selected && "relative z-10 border-b-0",
+    selected && !isLast && "h-[calc(100%+2px)]",
+  );
+}
+
 export default function CategoryTabs({ messages }: Props) {
-  const category = catalog.categories.find((item) => item.id === categoryId.value)!;
+  const count = catalog.categories.length;
 
   return (
-    <div class="flex items-end justify-end gap-3 pr-7" role="tablist">
-      {catalog.categories.map((item) => {
-        const selected = item.id === category.id;
+    <div class="contents" role="tablist">
+      {catalog.categories.map((item, index) => {
+        const selected = item.id === categoryId.value;
         return (
           <button
             key={item.id}
             type="button"
-            class={
-              selected
-                ? "sheet-tab relative z-[2] grid h-14 w-[72px] cursor-pointer place-items-center rounded-t-2xl border-2 border-b-0 border-ink p-0"
-                : "relative top-1 z-0 grid h-12 w-[72px] cursor-pointer place-items-center rounded-t-2xl border-2 border-ink p-0"
-            }
+            class={tabClass(index, count, selected)}
             role="tab"
             aria-selected={selected}
             aria-label={messages.categories[item.id]}
-            style={{ background: item.color, "--tab": item.color }}
+            style={{ background: item.color }}
             onClick={() => {
               categoryId.value = item.id;
             }}
@@ -37,13 +56,6 @@ export default function CategoryTabs({ messages }: Props) {
               width="36"
               height="36"
             />
-            {selected && (
-              <>
-                <span class="sheet-join" />
-                <span class="sheet-shoulder sheet-shoulder-left" />
-                <span class="sheet-shoulder sheet-shoulder-right" />
-              </>
-            )}
           </button>
         );
       })}
