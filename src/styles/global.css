@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #463128;
+  --color-lilac: #70508c;
+  --color-paper: #f0f4f8;
+  --color-butter: #ebe2a9;
+  --font-display: "Schoolbell", cursive;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    @apply bg-paper text-ink;
+  }
+
+  body {
+    @apply font-body font-light;
+  }
+
+  button,
+  a {
+    @apply font-[inherit] text-inherit focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-lilac;
+  }
+}
