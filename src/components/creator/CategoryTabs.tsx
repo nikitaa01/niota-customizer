@@ -8,16 +8,17 @@ type Props = {
 };
 
 function tabClass(index: number, selected: boolean) {
-  const shape = "grid h-full cursor-pointer place-items-center border-b-0 border-ink p-0";
+  const shape =
+    "grid h-full cursor-pointer place-items-center border-b-0 border-ink p-0";
   const open = selected && "relative z-10 h-[calc(100%+2px)]";
 
   if (index === 0) {
-    return cn(shape, "w-full rounded-tr-[18px] border-t-2 border-r-2", open);
+    return cn(shape, "w-full rounded-tr-[24px] border-t-2 border-r-2", open);
   }
 
   return cn(
     shape,
-    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[18px] rounded-tr-[18px] border-t-2 border-r-2 border-l-2",
+    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[24px] rounded-tr-[24px] border-t-2 border-r-2 border-l-2",
     open,
   );
 }
