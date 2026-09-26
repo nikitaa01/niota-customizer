@@ -1,18 +1,22 @@
 export const planes = [
   "background",
-  "hairBack",
+  "hair",
   "skin",
   "eyes",
-  "hairFront",
+  "outline",
+  "cheeks",
   "accessory",
+  "accessoryOutline",
 ] as const;
 
 export type Plane = (typeof planes)[number];
 
 export type Slot = "skin" | "eyes" | "hair" | "accessory" | "background";
 
+export type Position = "1" | "2";
+
 export type Layer = {
-  src: string;
+  src: string | Record<Position, string>;
   plane: Plane;
   tint?: { slot: Slot } | { color: string };
 };
@@ -24,6 +28,7 @@ export type Thumb =
 export type Option = {
   id: string;
   thumb: Thumb;
+  position?: Position;
   layers: Layer[];
 };
 
@@ -71,30 +76,51 @@ function colors(prefix: string, values: string[]): Option[] {
   }));
 }
 
-function hair(id: string): Option {
+const hairs: { id: string; position: Position }[] = [
+  { id: "low-pigtails", position: "2" },
+  { id: "wavy", position: "2" },
+  { id: "bob", position: "1" },
+  { id: "long", position: "1" },
+  { id: "curly", position: "2" },
+  { id: "bun", position: "2" },
+  { id: "braid", position: "1" },
+  { id: "pigtails", position: "2" },
+];
+
+function hair({ id, position }: { id: string; position: Position }): Option {
   const base = `/layers/hair/${id}`;
   return {
     id,
-    thumb: { type: "image", src: `/thumbs/hair/${id}.svg` },
+    position,
+    thumb: { type: "image", src: `/thumbs/hair/${id}.png` },
     layers: [
-      { src: `${base}/hair-back.svg`, plane: "hairBack", tint: { slot: "hair" } },
-      { src: `${base}/face.svg`, plane: "skin", tint: { slot: "skin" } },
-      { src: `${base}/iris.svg`, plane: "eyes", tint: { slot: "eyes" } },
-      { src: `${base}/eyes.svg`, plane: "eyes" },
-      { src: `${base}/bangs.svg`, plane: "hairFront", tint: { slot: "hair" } },
+      { src: `${base}/hair.svg`, plane: "hair", tint: { slot: "hair" } },
+      { src: `${base}/skin.svg`, plane: "skin", tint: { slot: "skin" } },
+      { src: `${base}/outline.png`, plane: "outline" },
     ],
   };
 }
 
-function accessory(id: string, layers: Layer[]): Option {
+function accessory(id: string, tint: boolean): Option {
+  const base = `/layers/accessory/${id}`;
+  const layers: Layer[] = [];
+  if (tint) {
+    layers.push({
+      src: { "1": `${base}/1.svg`, "2": `${base}/2.svg` },
+      plane: "accessory",
+      tint: { slot: "accessory" },
+    });
+  }
+  layers.push({
+    src: { "1": `${base}/1.png`, "2": `${base}/2.png` },
+    plane: "accessoryOutline",
+  });
   return {
     id,
-    thumb: { type: "image", src: `/thumbs/accessory/${id}.svg` },
+    thumb: { type: "image", src: `/thumbs/accessory/${id}.png` },
     layers,
   };
 }
-
-const hairIds = ["short", "bob", "long", "bangs", "curly", "bun", "wavy", "pigtails"];
 
 export const catalog: { categories: Category[]; defaults: Selection } = {
   defaults: {
@@ -154,7 +180,7 @@ export const catalog: { categories: Category[]; defaults: Selection } = {
         {
           id: "hair",
           selectionKey: "hair",
-          options: hairIds.map(hair),
+          options: hairs.map(hair),
         },
         {
           id: "hairColor",
@@ -191,39 +217,10 @@ export const catalog: { categories: Category[]; defaults: Selection } = {
           id: "accessory",
           selectionKey: "accessory",
           options: [
-            accessory("flower", [
-              {
-                src: "/layers/accessory/flower/petals.svg",
-                plane: "accessory",
-                tint: { slot: "accessory" },
-              },
-              {
-                src: "/layers/accessory/flower/center.svg",
-                plane: "accessory",
-                tint: { color: "#e23b4a" },
-              },
-            ]),
-            accessory("brow", [
-              {
-                src: "/layers/accessory/brow/shape.svg",
-                plane: "accessory",
-                tint: { slot: "accessory" },
-              },
-            ]),
-            accessory("glasses", [
-              {
-                src: "/layers/accessory/glasses/shape.svg",
-                plane: "accessory",
-                tint: { slot: "accessory" },
-              },
-            ]),
-            accessory("headphones", [
-              {
-                src: "/layers/accessory/headphones/shape.svg",
-                plane: "accessory",
-                tint: { slot: "accessory" },
-              },
-            ]),
+            accessory("flower", true),
+            accessory("headband", true),
+            accessory("glasses", false),
+            accessory("headphones", true),
           ],
         },
         {

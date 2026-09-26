@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import { messages, type Messages } from "../data/messages";
 import "../styles/global.css";
 import Creator from "./Creator";
@@ -26,7 +25,6 @@ const copy: Messages = messages[lang];
       href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap"
       rel="stylesheet"
     />
-    <ClientRouter />
   </head>
   <body>
     <header class="grid h-[120px] grid-cols-[1fr_auto_1fr] items-center border-b-[3px] border-ink bg-butter px-12 max-[720px]:h-24 max-[720px]:px-3">
@@ -76,10 +74,8 @@ const copy: Messages = messages[lang];
         </div>
       </section>
       <h2 class="mt-12 mb-0 text-center font-display text-4xl font-normal text-lilac max-[720px]:text-[28px]">{copy.haveFun}</h2>
-      <div class="mx-auto mt-5 mb-16 w-[min(852px,calc(100vw-32px))] overflow-hidden max-[884px]:h-[calc(540px*(100vw-32px)/852px)]">
-        <div class="w-[852px] max-[884px]:origin-top-left max-[884px]:[transform:scale(calc((100vw-32px)/852px))]">
-          <Creator client:load transition:persist messages={copy} />
-        </div>
+      <div class="mx-auto mt-5 mb-16 w-[min(852px,calc(100vw-32px))] overflow-x-auto">
+        <Creator client:load messages={copy} />
       </div>
     </main>
   </body>
