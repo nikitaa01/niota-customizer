@@ -7,31 +7,22 @@ type Props = {
   messages: Messages;
 };
 
-function tabClass(index: number, count: number, selected: boolean) {
-  const isFirst = index === 0;
-  const isLast = index === count - 1;
-  const shape = "grid h-full cursor-pointer place-items-center border-ink p-0";
+function tabClass(index: number, selected: boolean) {
+  const shape = "grid h-full cursor-pointer place-items-center border-b-0 border-ink p-0";
+  const open = selected && "relative z-10 h-[calc(100%+2px)]";
 
-  if (isFirst) {
-    return cn(
-      shape,
-      "w-full rounded-tr-[18px] border-t-2 border-r-2",
-      selected ? "relative z-10 h-[calc(100%+2px)]" : "border-b-2",
-    );
+  if (index === 0) {
+    return cn(shape, "w-full rounded-tr-[18px] border-t-2 border-r-2", open);
   }
 
   return cn(
     shape,
-    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[18px] rounded-tr-[18px] border-2",
-    isLast && "border-b-0",
-    selected && "relative z-10 border-b-0",
-    selected && !isLast && "h-[calc(100%+2px)]",
+    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[18px] rounded-tr-[18px] border-t-2 border-r-2 border-l-2",
+    open,
   );
 }
 
 export default function CategoryTabs({ messages }: Props) {
-  const count = catalog.categories.length;
-
   return (
     <div class="contents" role="tablist">
       {catalog.categories.map((item, index) => {
@@ -40,7 +31,7 @@ export default function CategoryTabs({ messages }: Props) {
           <button
             key={item.id}
             type="button"
-            class={tabClass(index, count, selected)}
+            class={tabClass(index, selected)}
             role="tab"
             aria-selected={selected}
             aria-label={messages.categories[item.id]}

@@ -54,23 +54,20 @@ export default function Creator({ messages }: Props) {
             class="absolute top-0 left-0 -z-20 h-[64px] w-full border-r-2"
             style={{ background: lastCategory.color }}
           />
-          {isLastCategory ? (
-            <div
-              class="absolute top-0 left-0 -z-10 h-[64px] w-full border-r-2 border-ink"
-              style={{ background: selectedCategory.color }}
-            />
-          ) : (
-            <>
-              <div
-                class="absolute top-0 left-0 -z-10 h-[64px] w-[calc(100%-108px)]"
-                style={{ background: selectedCategory.color }}
-              />
-              <div
-                class="absolute top-0 right-0 -z-10 h-[64px] w-[108px] rounded-tr-[18px] border-t-2 border-r-2 border-ink"
-                style={{ background: selectedCategory.color }}
-              />
-            </>
+          <div
+            class="absolute top-0 left-0 -z-10 h-[64px] w-[calc(100%-108px)] border-t-2 border-ink"
+            style={{ background: selectedCategory.color }}
+          />
+          {!isFirstCategory && (
+            <div class="absolute -left-0.5 top-0 z-20 h-0.5 w-0.5 bg-ink" />
           )}
+          <div
+            class={cn(
+              "absolute top-0 right-0 -z-10 h-[64px] w-[108px] border-r-2 border-ink",
+              !isLastCategory && "rounded-tr-[18px] border-t-2",
+            )}
+            style={{ background: selectedCategory.color }}
+          />
           <div
             class="absolute top-[64px] left-0 -z-10 h-[calc(100%-64px)] w-full rounded-br-[18px] border-b-2 border-r-2 border-ink"
             style={{ background: selectedCategory.color }}
