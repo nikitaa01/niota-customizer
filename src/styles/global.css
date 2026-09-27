@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Schoolbell";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/fonts/schoolbell.woff2") format("woff2");
+}
+
 @theme {
   --color-ink: #463128;
   --color-lilac: #70508c;
@@ -22,4 +30,8 @@
   a {
     @apply font-[inherit] text-inherit focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-lilac;
   }
+}
+
+@utility text-sticker {
+  filter: url("#text-sticker");
 }

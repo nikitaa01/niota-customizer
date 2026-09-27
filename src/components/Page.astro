@@ -19,23 +19,35 @@ const copy: Messages = messages[lang];
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{copy.metaTitle}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/schoolbell.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body>
+  <body class="text-pretty">
+    <svg class="absolute size-0" aria-hidden="true">
+      <filter id="text-sticker" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="dilated" />
+        <feGaussianBlur in="dilated" stdDeviation="3.2" result="blurred" />
+        <feComponentTransfer in="blurred" result="solid">
+          <feFuncA type="linear" slope="16" intercept="-2" />
+        </feComponentTransfer>
+        <feFlood flood-color="#ffffff" result="white" />
+        <feComposite in="white" in2="solid" operator="in" result="outline" />
+        <feMerge>
+          <feMergeNode in="outline" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </svg>
     <header class="grid h-[120px] grid-cols-[1fr_auto_1fr] items-center border-b-[3px] border-ink bg-butter px-12 max-[720px]:h-24 max-[720px]:px-3">
-      <a class="block w-[29px] justify-self-start" href="https://www.instagram.com/_daniadesign/" target="_blank" rel="noreferrer">
-        <img class="block h-[29px] w-[29px]" src="/icons/instagram.svg" alt="Instagram" width="29" height="29" />
+      <a class="flex size-[38px] items-center justify-center justify-self-start rounded-[14px] bg-white" href="https://www.instagram.com/_daniadesign/" target="_blank" rel="noreferrer" aria-label="Instagram">
+        <svg class="size-7" viewBox="0 0 448 512" fill="#70508C" aria-hidden="true">
+          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+        </svg>
       </a>
       <div class="text-center">
-        <h1 class="m-0 font-display text-[40px] leading-none font-normal text-ink max-[720px]:text-[28px]">{copy.brand}</h1>
-        <p class="mt-1 mb-0 font-display text-sm font-normal text-lilac">{copy.by}</p>
+        <h1 class="text-sticker m-0 font-display text-[40px] leading-none font-normal text-ink max-[720px]:text-[28px]">{copy.brand}</h1>
+        <p class="text-sticker mt-1 mb-0 font-display text-sm font-normal text-lilac">{copy.by}</p>
       </div>
-      <a class="justify-self-end font-display text-sm font-normal text-lilac no-underline" href={copy.langHref}>{copy.langSwitch}</a>
+      <a class="text-sticker inline-block justify-self-end font-display text-sm font-normal text-lilac no-underline" href={copy.langHref}>{copy.langSwitch}</a>
     </header>
     <main>
       <h2 class="mt-14 mb-0 text-center font-display text-4xl font-normal text-lilac max-[720px]:text-[28px]">{copy.hello}</h2>

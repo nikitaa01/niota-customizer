@@ -9,8 +9,8 @@ type Props = {
 
 function tabClass(index: number, selected: boolean) {
   const shape =
-    "grid h-full cursor-pointer place-items-center border-b-0 border-ink p-0";
-  const open = selected && "relative z-10 h-[calc(100%+2px)]";
+    "relative grid h-full cursor-pointer border-b-0 border-ink p-0";
+  const open = selected && "z-10 h-[calc(100%+2px)]";
 
   if (index === 0) {
     return cn(shape, "w-full rounded-tr-[24px] border-t-2 border-r-2", open);
@@ -42,11 +42,9 @@ export default function CategoryTabs({ messages }: Props) {
             }}
           >
             <img
-              class="block h-9 w-9 object-contain"
+              class="absolute top-8 left-1/2 h-12 w-auto -translate-x-1/2 -translate-y-1/2"
               src={item.icon}
               alt=""
-              width="36"
-              height="36"
             />
           </button>
         );

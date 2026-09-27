@@ -21,7 +21,9 @@ function choose(group: Group, optionId: string) {
 }
 
 export default function Options({ messages }: Props) {
-  const category = catalog.categories.find((item) => item.id === categoryId.value)!;
+  const category = catalog.categories.find(
+    (item) => item.id === categoryId.value,
+  )!;
   const groups = visibleGroups(category, hairGroupId.value);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function Options({ messages }: Props) {
             <button
               key={group.id}
               type="button"
-              class="cursor-pointer rounded-full border-2 border-transparent bg-transparent px-3.5 pt-0.5 pb-1 font-display text-2xl font-normal text-ink aria-selected:border-ink aria-selected:bg-white"
+              class="cursor-pointer rounded-full border-2 border-transparent bg-transparent px-3.5 pt-0.5 pb-1 font-display text-2xl font-normal text-ink aria-selected:border-ink aria-selected:bg-[#CDE799]"
               role="tab"
               aria-selected={group.id === hairGroupId.value}
               onClick={() => {
@@ -57,15 +59,7 @@ export default function Options({ messages }: Props) {
               {messages.groups[group.id]}
             </h3>
           )}
-          <div
-            class={
-              group.slot
-                ? "grid grid-cols-4 gap-x-[25px] gap-y-[22px]"
-                : group.selectionKey === "accessory"
-                  ? "flex items-center justify-between"
-                  : "grid grid-cols-4 items-center gap-x-2 gap-y-4"
-            }
-          >
+          <div class="grid grid-cols-4 gap-x-[25px] gap-y-[22px]">
             {group.options.map((option) => {
               const pressed = selectedId(group, selection.value) === option.id;
               const label =
@@ -77,7 +71,7 @@ export default function Options({ messages }: Props) {
                   class={
                     group.slot
                       ? "h-11 cursor-pointer rounded-[11px] border-2 border-ink p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
-                      : "cursor-pointer rounded-xl border-0 bg-transparent p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
+                      : "grid aspect-square w-full cursor-pointer place-items-center rounded-xl border-0 bg-transparent p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
                   }
                   aria-pressed={pressed}
                   aria-label={label}
@@ -92,7 +86,7 @@ export default function Options({ messages }: Props) {
                 >
                   {option.thumb.type === "image" && (
                     <img
-                      class="block h-[52px] w-[68px] object-contain"
+                      class="size-full object-contain object-center"
                       src={option.thumb.src}
                       alt=""
                     />
