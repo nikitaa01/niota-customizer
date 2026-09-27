@@ -16,18 +16,22 @@ export default function PreviewFrame() {
   return (
     <div class="relative flex items-start p-6 md:row-span-2 max-md:[grid-area:preview]">
       <div
-        class="absolute top-0 left-0 -z-20 h-[64px] w-full rounded-tl-[24px] border-t-2 border-ink"
+        class="absolute md:top-0 max-md:bottom-0 left-0 -z-30 h-[64px] w-full md:rounded-tl-[24px] md:border-t-2 max-md:border-r-2 border-ink"
         style={{ background: firstCategory.color }}
       />
       <div
         class={cn(
-          "absolute top-0 left-0 -z-10 h-[64px] w-full rounded-tl-[24px] border-t-2 border-l-2 border-ink",
-          !isFirstCategory && "rounded-tr-[24px] border-r-2",
+          "absolute md:top-0 max-md:bottom-0 md:left-0 max-md:right-0 -z-10 h-[64px] max-md:w-[64px] w-full md:rounded-tl-[24px] md:border-t-2 md:border-l-2 max-md:border-r-2 border-ink",
+          !isFirstCategory &&
+            "md:rounded-tr-[24px] border-r-2 max-md:border-b-2 max-md:rounded-br-[24px]",
         )}
         style={{ background: selectedCategory.color }}
       />
       <div
-        class="absolute top-[64px] left-0 -z-10 h-[calc(100%-64px)] w-full rounded-bl-[24px] border-b-2 border-l-2 border-ink"
+        class={cn(
+          "absolute md:top-[64px] max-md:top-0 left-0 -z-20 md:h-[calc(100%-64px)] max-md:h-full w-full md:rounded-bl-[24px] md:border-b-2 border-l-2 max-md:border-t-2 max-md:border-r-2 max-md:rounded-t-[24px] border-ink",
+          !isFirstCategory && "max-md:rounded-br-[24px]",
+        )}
         style={{ background: selectedCategory.color }}
       />
       <div class="aspect-square w-full overflow-hidden rounded-[24px] border-2 border-ink bg-white">
