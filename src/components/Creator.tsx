@@ -26,7 +26,7 @@ export default function Creator({ messages }: Props) {
   return (
     <div>
       <div class="relative grid grid-cols-[1fr_repeat(4,108px)] grid-rows-[64px_1fr]">
-        <div class="relative row-span-2 p-6">
+        <div class="relative row-span-2 flex items-start p-6">
           <div
             class="absolute top-0 left-0 -z-20 h-[64px] w-full rounded-tl-[24px] border-t-2 border-ink"
             style={{ background: firstCategory.color }}
@@ -42,14 +42,14 @@ export default function Creator({ messages }: Props) {
             class="absolute top-[64px] left-0 -z-10 h-[calc(100%-64px)] w-full rounded-bl-[24px] border-b-2 border-l-2 border-ink"
             style={{ background: selectedCategory.color }}
           />
-          <div class="aspect-square size-full overflow-hidden rounded-[24px] border-2 border-ink bg-white">
+          <div class="aspect-square w-full overflow-hidden rounded-[24px] border-2 border-ink bg-white">
             <Preview />
           </div>
         </div>
 
         <CategoryTabs messages={messages} />
 
-        <div class="relative col-span-4 min-h-0">
+        <div class="relative col-span-4">
           <div
             class="absolute top-0 left-0 -z-20 h-[64px] w-full border-r-2"
             style={{ background: lastCategory.color }}
@@ -72,7 +72,7 @@ export default function Creator({ messages }: Props) {
             class="absolute top-[64px] left-0 -z-10 h-[calc(100%-64px)] w-full rounded-br-[24px] border-b-2 border-r-2 border-ink"
             style={{ background: selectedCategory.color }}
           />
-          <div class="absolute inset-0 p-2">
+          <div class="p-2">
             <Options messages={messages} />
           </div>
         </div>
