@@ -87,7 +87,7 @@ export const messages: Record<"es" | "en", Messages> = {
     by: "by @_daniadesign",
     langSwitch: "ESPAÑOL",
     langHref: "/",
-    hello: "Hello!",
+    hello: "Hi!",
     haveFun: "Have fun creating!",
     download: "Download my Nyota",
     groups: {
@@ -109,32 +109,32 @@ export const messages: Record<"es" | "en", Messages> = {
       [
         { text: "I'm Dania (" },
         { text: "@_daniadesign", weight: "medium", href: instagram },
-        { text: ") and I made this little " },
-        { text: "Nyota Creator", italic: true },
         {
-          text: " for fun, and because I would love to see every Nyota you can imagine.",
+          text: ") and I created this little Nyota Creator just for fun, and because I'm so excited to see all the Nyotas you can imagine.",
         },
       ],
       [
         {
-          text: "Create a Nyota in your image, a friend's, or however you like.",
+          text: "Create a Nyota that looks like you, a friend, or simply however you feel like",
           weight: "medium",
         },
         {
-          text: " Play with every option until you find your perfect combination. And when you're ready, ",
+          text: ". Play around with all the different options until you find your perfect combination. And when you're ready, ",
         },
         {
-          text: "download it and use it as a profile picture wherever you want!",
+          text: "download your Nyota and use it as a profile picture wherever you want!",
           weight: "medium",
         },
       ],
       [
-        { text: "If you share your Nyota, tag me so I can see it. " },
-        { text: "This is a free tool made with a lot of care, so " },
         {
-          text: "a mention or a credit means a lot to me.",
+          text: "If you share your Nyota on social media, tag me so I can see it. Since this is a free tool made with lots of love, ",
+        },
+        {
+          text: "mentioning me or giving me credit means a lot to me",
           weight: "medium",
         },
+        { text: "." },
       ],
     ],
   },
