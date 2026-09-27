@@ -54,7 +54,7 @@ export default function CategoryTabs({ messages }: Props) {
             }}
           >
             <img
-              class="absolute md:top-8 max-md:top-1/2 md:left-1/2 max-md:right-2 md:h-12 h-auto w-8 md:w-auto -translate-x-1/2 -translate-y-1/2"
+              class="absolute md:top-8 max-md:top-1/2 md:left-1/2 max-md:right-3 md:h-12 h-auto w-12 md:w-auto md:-translate-x-1/2 -translate-y-1/2"
               src={item.icon}
               alt=""
             />

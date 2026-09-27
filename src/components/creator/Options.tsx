@@ -40,7 +40,7 @@ export default function Options({ messages }: Props) {
             <button
               key={group.id}
               type="button"
-              class="cursor-pointer rounded-full border-2 border-transparent bg-transparent px-3.5 pt-0.5 pb-1 font-display text-2xl font-normal text-ink aria-selected:border-ink aria-selected:bg-[#CDE799]"
+              class="cursor-pointer rounded-full border-2 border-ink bg-transparent px-3.5 pt-0.5 pb-1 font-display text-2xl font-normal text-ink aria-selected:bg-[#CDE799]"
               role="tab"
               aria-selected={group.id === hairGroupId.value}
               onClick={() => {
