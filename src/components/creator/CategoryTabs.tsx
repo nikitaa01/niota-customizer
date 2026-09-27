@@ -16,15 +16,21 @@ const mobileAreas = [
 
 function tabClass(index: number, selected: boolean) {
   const shape = "relative grid h-full cursor-pointer border-b-0 border-ink p-0";
-  const open = selected && "z-10 h-[calc(100%+2px)]";
+  const open =
+    selected &&
+    "z-10 md:h-[calc(100%+2px)] max-md:w-[calc(100%+2px)] max-md:ml-[-2px]";
 
   if (index === 0) {
-    return cn(shape, "w-full rounded-tr-[24px] border-t-2 border-r-2", open);
+    return cn(
+      shape,
+      "w-full md:rounded-tr-[24px] md:border-t-2 border-r-2 max-md:border-b-2 max-md:rounded-br-[24px]",
+      open,
+    );
   }
 
   return cn(
     shape,
-    "-ml-0.5 w-[calc(100%+2px)] rounded-tl-[24px] rounded-tr-[24px] border-t-2 border-r-2 border-l-2",
+    "md:-ml-0.5 md:w-[calc(100%+2px)] max-md:-mt-0.5 max-md:h-[calc(100%+2px)] md:rounded-tl-[24px] rounded-tr-[24px] border-t-2 border-r-2 md:border-l-2 max-md:border-b-2 max-md:rounded-br-[24px]",
     open,
   );
 }
@@ -48,7 +54,7 @@ export default function CategoryTabs({ messages }: Props) {
             }}
           >
             <img
-              class="absolute top-8 left-1/2 h-12 w-auto -translate-x-1/2 -translate-y-1/2"
+              class="absolute md:top-8 max-md:top-1/2 left-1/2 md:h-12 h-8 w-auto -translate-x-1/2 -translate-y-1/2"
               src={item.icon}
               alt=""
             />

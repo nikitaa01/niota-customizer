@@ -31,7 +31,7 @@ export default function OptionsFrame({ messages }: Props) {
         style={{ background: selectedCategory.color }}
       />
       <div
-        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[96px] md:border-r-2 border-ink max-md:block"
+        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[96px] border-r-2 border-ink max-md:block"
         style={{ background: selectedCategory.color }}
       />
       {!isFirstCategory && (
