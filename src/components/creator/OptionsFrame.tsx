@@ -23,7 +23,7 @@ export default function OptionsFrame({ messages }: Props) {
   return (
     <div class="relative isolate md:col-span-4 max-md:[grid-area:options] max-md:min-h-[450px]">
       <div
-        class="absolute -z-30 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[96px] max-md:border-b-2"
+        class="absolute -z-30 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[72px] max-md:border-b-2"
         style={{ background: lastCategory.color }}
       />
       <div
@@ -31,15 +31,15 @@ export default function OptionsFrame({ messages }: Props) {
         style={{ background: selectedCategory.color }}
       />
       <div
-        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[96px] border-r-2 border-ink max-md:block"
+        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[72px] border-r-2 border-ink max-md:block"
         style={{ background: selectedCategory.color }}
       />
       {!isFirstCategory && (
-        <div class="absolute -left-0.5 top-0 z-20 h-0.5 w-0.5 bg-ink" />
+        <div class="absolute md:-left-0.5 md:top-0 max-md:-top-0.5 max-md:right-0 z-20 h-0.5 w-0.5 bg-ink" />
       )}
       <div
         class={cn(
-          "absolute -z-10 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[25%] max-md:w-[96px] max-md:border-b-2",
+          "absolute -z-10 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[25%] max-md:w-[72px] max-md:border-b-2",
           !isLastCategory &&
             "md:rounded-tr-[24px] md:border-t-2 max-md:rounded-br-[24px] max-md:border-r-2",
         )}

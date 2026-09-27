@@ -21,7 +21,7 @@ export default function PreviewFrame() {
       />
       <div
         class={cn(
-          "absolute md:top-0 max-md:bottom-0 md:left-0 max-md:right-0 -z-10 h-[64px] max-md:w-[96px] w-full md:rounded-tl-[24px] md:border-t-2 md:border-l-2 max-md:border-r-2 border-ink",
+          "absolute md:top-0 max-md:bottom-0 md:left-0 max-md:right-0 -z-10 h-[64px] max-md:w-[72px] w-full md:rounded-tl-[24px] md:border-t-2 md:border-l-2 max-md:border-r-2 border-ink",
           !isFirstCategory &&
             "md:rounded-tr-[24px] border-r-2 max-md:border-b-2 max-md:rounded-br-[24px]",
         )}
