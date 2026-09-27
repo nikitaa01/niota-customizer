@@ -7,9 +7,15 @@ type Props = {
   messages: Messages;
 };
 
+const mobileAreas = [
+  "max-md:[grid-area:category1]",
+  "max-md:[grid-area:category2]",
+  "max-md:[grid-area:category3]",
+  "max-md:[grid-area:category4]",
+];
+
 function tabClass(index: number, selected: boolean) {
-  const shape =
-    "relative grid h-full cursor-pointer border-b-0 border-ink p-0";
+  const shape = "relative grid h-full cursor-pointer border-b-0 border-ink p-0";
   const open = selected && "z-10 h-[calc(100%+2px)]";
 
   if (index === 0) {
@@ -32,7 +38,7 @@ export default function CategoryTabs({ messages }: Props) {
           <button
             key={item.id}
             type="button"
-            class={tabClass(index, selected)}
+            class={cn(tabClass(index, selected), mobileAreas[index])}
             role="tab"
             aria-selected={selected}
             aria-label={messages.categories[item.id]}

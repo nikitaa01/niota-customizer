@@ -25,8 +25,13 @@ export default function Creator({ messages }: Props) {
 
   return (
     <div>
-      <div class="relative grid grid-cols-[1fr_repeat(4,108px)] grid-rows-[64px_1fr]">
-        <div class="relative row-span-2 flex items-start p-6">
+      <div
+        class={cn(
+          "relative grid grid-cols-[1fr_repeat(4,108px)] grid-rows-[64px_1fr]",
+          "max-md:grid-cols-[1fr_repeat(1,48px)] max-md:grid-rows-[1fr_repeat(4,auto)] max-md:[grid-template-areas:'preview_preview'_'options_category1'_'options_category2'_'options_category3'_'options_category4']",
+        )}
+      >
+        <div class="relative flex items-start p-6 md:row-span-2 max-md:[grid-area:preview]">
           <div
             class="absolute top-0 left-0 -z-20 h-[64px] w-full rounded-tl-[24px] border-t-2 border-ink"
             style={{ background: firstCategory.color }}
@@ -49,7 +54,7 @@ export default function Creator({ messages }: Props) {
 
         <CategoryTabs messages={messages} />
 
-        <div class="relative col-span-4">
+        <div class="relative md:col-span-4 max-md:[grid-area:options]">
           <div
             class="absolute top-0 left-0 -z-20 h-[64px] w-full border-r-2"
             style={{ background: lastCategory.color }}
