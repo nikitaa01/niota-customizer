@@ -23,7 +23,7 @@ export default function OptionsFrame({ messages }: Props) {
   return (
     <div class="relative isolate md:col-span-4 max-md:[grid-area:options]">
       <div
-        class="absolute -z-30 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-t-2 md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[64px] max-md:border-r-2 max-md:border-b-2"
+        class="absolute -z-30 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[64px] max-md:border-r-2 max-md:border-b-2"
         style={{ background: lastCategory.color }}
       />
       <div
