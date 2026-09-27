@@ -46,7 +46,7 @@ export default function OptionsFrame({ messages }: Props) {
         style={{ background: selectedCategory.color }}
       />
       <div
-        class="absolute left-0 -z-20 w-full rounded-br-[24px] border-b-2 border-r-2 border-ink md:top-[64px] md:h-[calc(100%-64px)] max-md:top-0 max-md:h-full"
+        class="absolute left-0 -z-20 w-full rounded-br-[24px] border-b-2 border-r-2 border-ink md:top-[64px] md:h-[calc(100%-64px)] max-md:top-0 max-md:h-full max-md:border-l-2 max-md:rounded-bl-[24px]"
         style={{ background: selectedCategory.color }}
       />
       <div class="p-2">
