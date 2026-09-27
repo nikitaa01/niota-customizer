@@ -14,8 +14,8 @@ export default function Creator({ messages }: Props) {
     <div>
       <div
         class={cn(
-          "relative grid grid-cols-[1fr_repeat(4,108px)] grid-rows-[64px_1fr]",
-          "max-md:grid-cols-[1fr_repeat(1,64px)] max-md:grid-rows-[1fr_repeat(4,auto)] max-md:[grid-template-areas:'preview_preview'_'options_category1'_'options_category2'_'options_category3'_'options_category4']",
+          "relative grid grid-cols-[1fr_repeat(4,108px)] grid-rows-[64px_1fr] [&>*]:overflow-hidden",
+          "max-md:grid-cols-[1fr_repeat(1,96px)] max-md:grid-rows-[1fr_repeat(4,auto)] max-md:[grid-template-areas:'preview_preview'_'options_category1'_'options_category2'_'options_category3'_'options_category4']",
         )}
       >
         <PreviewFrame />
