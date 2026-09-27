@@ -31,7 +31,7 @@ export default function OptionsFrame({ messages }: Props) {
         style={{ background: selectedCategory.color }}
       />
       <div
-        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[64px] border-r-2 border-ink max-md:block"
+        class="absolute top-0 right-0 -z-10 hidden h-[calc(100%-64px)] w-[64px] md:border-r-2 border-ink max-md:block"
         style={{ background: selectedCategory.color }}
       />
       {!isFirstCategory && (
@@ -39,7 +39,7 @@ export default function OptionsFrame({ messages }: Props) {
       )}
       <div
         class={cn(
-          "absolute -z-10 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[64px] max-md:border-b-2",
+          "absolute -z-10 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[25%] max-md:w-[64px] max-md:border-b-2",
           !isLastCategory &&
             "md:rounded-tr-[24px] md:border-t-2 max-md:rounded-br-[24px] max-md:border-r-2",
         )}
