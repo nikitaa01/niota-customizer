@@ -14,7 +14,7 @@ export default function PreviewFrame() {
   const isFirstCategory = categoryId.value === firstCategory.id;
 
   return (
-    <div class="relative flex items-start p-6 md:row-span-2 max-md:[grid-area:preview]">
+    <div class="relative isolate flex items-start p-6 md:row-span-2 max-md:[grid-area:preview]">
       <div
         class="absolute md:top-0 max-md:bottom-0 left-0 -z-30 h-[64px] w-full md:rounded-tl-[24px] md:border-t-2 max-md:border-r-2 border-ink"
         style={{ background: firstCategory.color }}
