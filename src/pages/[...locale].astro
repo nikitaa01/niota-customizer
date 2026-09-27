@@ -1,17 +1,27 @@
 ---
+import type { GetStaticPaths } from "astro";
+import Creator from "../components/Creator";
 import { messages, type Messages } from "../data/messages";
 import "../styles/global.css";
-import Creator from "./Creator";
 
-interface Props {
-  lang: "es" | "en";
+
+type Props = {
+  locale: "es" | "en";
 }
 
-const { lang } = Astro.props;
-const copy: Messages = messages[lang];
+export const getStaticPaths: GetStaticPaths = () => {
+  return [
+    { params: { locale: undefined }, props: { locale: "es" } },
+    { params: { locale: "en" }, props: { locale: "en" } },
+  ];
+}
+
+const { locale } = Astro.props;
+const copy: Messages = messages[locale];
 ---
 
-<html lang={lang}>
+
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
