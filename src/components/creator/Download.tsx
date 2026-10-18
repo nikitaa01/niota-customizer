@@ -52,6 +52,21 @@ async function exportNyota(current: Selection) {
       else reject(new Error("Could not export Nyota as PNG"));
     }, "image/png");
   });
+
+  if (/iPhone/i.test(navigator.userAgent) && navigator.share) {
+    const files = [new File([blob], "nyota.png", { type: "image/png" })];
+    if (navigator.canShare?.({ files })) {
+      try {
+        await navigator.share({ files });
+        return;
+      } catch (error) {
+        // Cancelling the share sheet should not start a download.
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        // Fall back to downloading if sharing fails or user activation expires.
+      }
+    }
+  }
+
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
