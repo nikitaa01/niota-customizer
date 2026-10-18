@@ -53,7 +53,7 @@ async function exportNyota(current: Selection) {
     }, "image/png");
   });
 
-  if (/iPhone|Android/i.test(navigator.userAgent) && navigator.share) {
+  if (/iPhone/i.test(navigator.userAgent) && navigator.share) {
     const files = [new File([blob], "nyota.png", { type: "image/png" })];
     if (navigator.canShare?.({ files })) {
       try {
