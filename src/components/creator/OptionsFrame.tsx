@@ -21,7 +21,7 @@ export default function OptionsFrame({ messages }: Props) {
   const isLastCategory = categoryId.value === lastCategory.id;
 
   return (
-    <div class="relative isolate md:col-span-4 max-md:[grid-area:options] max-md:min-h-[450px]">
+    <div class="relative isolate md:col-span-4 max-md:[grid-area:options] max-md:min-h-[390px]">
       <div
         class="absolute -z-30 border-ink md:top-0 md:right-0 md:h-[64px] md:w-[108px] md:border-r-2 max-md:right-0 max-md:bottom-0 max-md:h-[64px] max-md:w-[72px] max-md:border-b-2"
         style={{ background: lastCategory.color }}
