@@ -46,10 +46,18 @@ async function exportNyota(current: Selection) {
     context.drawImage(scratch, 0, 0);
   }
 
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((result) => {
+      if (result) resolve(result);
+      else reject(new Error("Could not export Nyota as PNG"));
+    }, "image/png");
+  });
+  const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
-  link.href = canvas.toDataURL("image/png");
+  link.href = url;
   link.download = "nyota.png";
   link.click();
+  // Keep the URL alive for Safari's download prompt; unloading releases it.
 }
 
 export default function Download({ messages }: Props) {
