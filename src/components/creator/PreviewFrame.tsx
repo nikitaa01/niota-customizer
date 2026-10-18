@@ -34,7 +34,7 @@ export default function PreviewFrame() {
         )}
         style={{ background: selectedCategory.color }}
       />
-      <div class="aspect-square w-full overflow-hidden rounded-[24px] border-2 border-ink bg-white">
+      <div class="aspect-square w-full overflow-hidden rounded-[24px] border-2 border-ink bg-white max-md:mx-auto max-md:max-w-sm">
         <Preview />
       </div>
     </div>

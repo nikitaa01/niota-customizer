@@ -24,8 +24,7 @@ const copy: Messages = messages[locale];
 <html lang={locale}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{copy.metaTitle}</title>
@@ -55,14 +54,16 @@ const copy: Messages = messages[locale];
       </a>
       <div class="text-center">
         <h1 class="text-sticker m-0 font-display text-[40px] leading-none font-normal text-ink max-[720px]:text-[28px]">{copy.brand}</h1>
-        <p class="text-sticker mt-1 mb-0 font-display text-sm font-normal text-lilac">{copy.by}</p>
+        <p class="text-sticker mt-1 mb-0 font-display text-sm font-normal text-lilac">
+          <a class="text-lilac no-underline" href="https://www.instagram.com/_daniadesign/" target="_blank" rel="noreferrer">{copy.by}</a>
+        </p>
       </div>
       <a class="text-sticker inline-block justify-self-end font-display text-sm font-normal text-lilac no-underline" href={copy.langHref}>{copy.langSwitch}</a>
     </header>
     <main>
       <h2 class="mt-14 mb-0 text-center font-display text-4xl font-normal text-lilac max-[720px]:text-[28px]">{copy.hello}</h2>
-      <section class="mx-auto mt-7 flex max-w-[640px] items-center justify-center gap-6 px-6 max-[720px]:flex-col">
-        <div class="w-[min(381px,100%)] text-xs leading-[1.35] [&_a]:font-medium [&_a]:no-underline">
+      <section class="relative mx-auto mt-7 grid w-[min(748px,calc(100vw-128px))] grid-cols-[minmax(0,1fr)_180px] gap-6 max-[720px]:flex max-[720px]:flex-col">
+        <div class="min-w-0 flex-1 text-xs leading-[1.35] md:text-sm [&_a]:font-medium [&_a]:no-underline">
           {
             copy.intro.map((paragraph) => (
               <p class="mt-3 mb-0 first:mt-0">
@@ -83,22 +84,17 @@ const copy: Messages = messages[locale];
             ))
           }
         </div>
-        <div class="relative h-[180px] w-[180px] shrink-0 rounded-[11px] border-2 border-ink bg-[#b5e2f9]" aria-hidden="true">
-          <div class="absolute top-9 left-2 h-[108.662px] w-[163.485px]">
-            <img class="absolute top-[3.45px] left-[3.47px] block h-[94.476px] w-[156.941px]" src="/intro/hair.svg" alt="" width="157" height="94" />
-            <img class="absolute top-[34.38px] left-[29.23px] block h-[72.11px] w-[108.578px]" src="/intro/face.svg" alt="" width="109" height="72" />
-            <img class="absolute top-[63.38px] left-[53.42px] block h-[23.947px] w-[68.748px]" src="/intro/iris.svg" alt="" width="69" height="24" />
-            <img class="absolute top-[63.38px] left-[44.9px] block h-[23.947px] w-[63.637px]" src="/intro/eyes.svg" alt="" width="64" height="24" />
-            <div class="pointer-events-none absolute inset-0 overflow-hidden">
-              <img class="absolute top-[-85.35%] left-[-100.96%] h-[284.16%] w-[251.83%] max-w-none" src="/intro/texture.png" alt="" />
-            </div>
-          </div>
+        <div class="absolute top-0 right-0 bottom-0 aspect-square rounded-[11px] border-2 border-ink bg-[#b5e2f9] max-[720px]:relative max-[720px]:top-auto max-[720px]:right-auto max-[720px]:bottom-auto max-[720px]:w-full" aria-hidden="true">
+          <img class="size-full object-contain" src="/intro/icono-intro.png" alt="" width="180" height="180" />
         </div>
       </section>
       <h2 class="mt-12 mb-0 text-center font-display text-4xl font-normal text-lilac max-[720px]:text-[28px]">{copy.haveFun}</h2>
-      <div class="mx-auto mt-5 mb-16 w-[min(852px,calc(100vw-32px))] overflow-x-auto">
+      <div class="mx-auto mt-5 mb-6 w-[min(852px,calc(100vw-32px))] overflow-x-auto">
         <Creator client:load messages={copy} />
       </div>
     </main>
+    <footer class="flex min-h-[64px] items-center justify-center bg-[#f0f5f8] px-4 pt-6 pb-3 text-center font-display text-xs leading-tight text-[#70508C]">
+      <p class="m-0">Made with love by <a class="text-[#70508C] underline" href="https://www.instagram.com/_daniadesign/" target="_blank" rel="noreferrer">@_daniadesign</a> &lt;3</p>
+    </footer>
   </body>
 </html>

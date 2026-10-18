@@ -33,7 +33,7 @@ export default function Options({ messages }: Props) {
   }, [categoryId.value, hairGroupId.value]);
 
   return (
-    <div class="flex flex-col gap-[18px] px-3 py-2">
+    <div class="flex h-full flex-col gap-[18px] px-3 py-2 max-md:gap-4 max-md:px-4 max-md:pt-4 max-md:pb-8">
       {category.view === "tabs" && (
         <div class="flex gap-4" role="tablist">
           {category.groups.map((group) => (
@@ -52,51 +52,56 @@ export default function Options({ messages }: Props) {
           ))}
         </div>
       )}
-      {groups.map((group) => (
-        <section key={group.id}>
-          {category.view === "stack" && (
-            <h3 class="mb-2 font-display text-2xl font-normal">
-              {messages.groups[group.id]}
-            </h3>
-          )}
-          <div class="grid grid-cols-4 gap-x-[25px] gap-y-[22px]">
-            {group.options.map((option) => {
-              const pressed = selectedId(group, selection.value) === option.id;
-              const label =
-                option.thumb.type === "color" ? option.thumb.color : option.id;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  class={
-                    group.slot
-                      ? "h-11 cursor-pointer rounded-[11px] border-2 border-ink p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
-                      : "grid aspect-square w-full cursor-pointer place-items-center rounded-xl border-0 bg-transparent p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
-                  }
-                  aria-pressed={pressed}
-                  aria-label={label}
-                  style={
-                    option.thumb.type === "color"
-                      ? { background: option.thumb.color }
-                      : undefined
-                  }
-                  onPointerEnter={() => preloadOption(option)}
-                  onFocus={() => preloadOption(option)}
-                  onClick={() => choose(group, option.id)}
-                >
-                  {option.thumb.type === "image" && (
-                    <img
-                      class="size-full object-contain object-center"
-                      src={option.thumb.src}
-                      alt=""
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+      <div class="flex min-h-0 flex-1 flex-col max-md:justify-between md:contents">
+        {groups.map((group) => (
+          <section key={group.id}>
+            {category.view === "stack" && (
+              <h3 class="mb-2 font-display text-2xl font-normal">
+                {messages.groups[group.id]}
+              </h3>
+            )}
+            <div class="grid grid-cols-4 gap-x-[25px] gap-y-[22px] max-md:gap-3">
+              {group.options.map((option) => {
+                const pressed =
+                  selectedId(group, selection.value) === option.id;
+                const label =
+                  option.thumb.type === "color"
+                    ? option.thumb.color
+                    : option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    class={
+                      group.slot
+                        ? "h-11 cursor-pointer rounded-[11px] border-2 border-ink p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
+                        : "grid aspect-square w-full cursor-pointer place-items-center rounded-xl border-0 bg-transparent p-0 aria-pressed:outline-[3px] aria-pressed:outline-offset-2 aria-pressed:outline-ink"
+                    }
+                    aria-pressed={pressed}
+                    aria-label={label}
+                    style={
+                      option.thumb.type === "color"
+                        ? { background: option.thumb.color }
+                        : undefined
+                    }
+                    onPointerEnter={() => preloadOption(option)}
+                    onFocus={() => preloadOption(option)}
+                    onClick={() => choose(group, option.id)}
+                  >
+                    {option.thumb.type === "image" && (
+                      <img
+                        class="size-full object-contain object-center"
+                        src={option.thumb.src}
+                        alt=""
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
